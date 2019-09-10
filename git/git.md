@@ -29,7 +29,7 @@ git在此不多做介绍,我也是Noob.
 
 # 基础设置
 
-## 安装完成git后打开git bash ![gitbash截图](./pics/gitbash.png)
+## 安装完成git后打开git bash ![gitbash截图](../images/gitbash.png)
 
 **Git 全局配置(建议安装好git就配置)**
 
