@@ -1,4 +1,4 @@
-# Related issues 关联的jira上issue
+# Related issues 关联的jira上的issue
 
 > 如果commit 信息中有以下信息，会自动关联
 
@@ -26,3 +26,9 @@ git commit -m "docs(jira):增加了详细说明" -m "修改了git-jira.md" -m "C
 **看图示**
 
 ![看图](./images/issueid.png)
+
+[上一模块Git工作流](gitworkflow)
+
+[返回目录](home)
+
+[下一模块Git与Sonarqube集成](git-sonar)
