@@ -2,8 +2,16 @@
 - [Git基本概念](#Git概念)
     - [工作原理/工作区域](#工作原理/工作区域)
     - [文件分类](#文件分类)
-- [Help](#Help!)
-- [参考](#Reference)
+    
+    - [工作区](#工作区)
+    
+    - [远程仓库](#远程仓库)
+    
+    - [暂存区](#暂存区)
+    
+    - [其他区域](#其他区域)
+
+- [参考](#reference)
 
 # 写在前面
 
@@ -28,9 +36,13 @@ git在此不多做介绍,我也是Noob.
 
 - Index:暂存区，执行`git commit`命令就把改动提交到了仓库区（当前分支）
 
-- Repository:仓库区（或本地仓库），执行`git push origin master`提交到远程仓库，执行`git clone` 地址将克隆远程仓库到本地
+- Repository:仓库区（或本地仓库），执行`git push origin master`提交到远程仓库，执行`git clone 远程仓库地址` 将克隆远程仓库到本地
 
-- Remote:远程仓库，就是类似github，coding等网站所提供的仓库
+- Remote:远程仓库，就是类似github，gitlab等网站所提供的仓库
+
+- stash: 存档库，当你去修改别的东西的时候,临时保存当前的修改。
+
+  > 一般见于切换分支时, git 提示未commit的文件是否需要暂存。
 
 #### 文件分类
 
@@ -40,6 +52,32 @@ git在此不多做介绍,我也是Noob.
 已修改但未提交的文件。
 - 临时区域
 已标记为已在下次提交中进行的已修改文件。
+
+----
+
+## 工作区
+
+你修改文件的地方
+
+![image-20191113160926843](../images/image-20191113160926843.png)
+
+## 远程仓库
+
+与小伙伴共享代码的地方,可以有多个
+
+![image-20191113160823681](../images/image-20191113160823681.png)
+
+
+
+## 暂存区
+
+![image-20191113162356078](../images/image-20191113162356078.png)
+
+
+
+## 其他区域
+
+详见参考中的 [可视化介绍git](https://ndpsoftware.com/git-cheatsheet.html)
 
 
 # Reference
@@ -57,3 +95,5 @@ git在此不多做介绍,我也是Noob.
 [前端工程化的代码规范](https://zhuanlan.zhihu.com/p/71143472?utm_source=wechat_session&utm_medium=social&utm_oi=910223710001184768)
 
 [git入门](https://zhuanlan.zhihu.com/p/78206003?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=910223710001184768)
+
+[可视化介绍git](https://ndpsoftware.com/git-cheatsheet.html)

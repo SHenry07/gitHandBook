@@ -28,6 +28,7 @@ git config --global pull.rebase true
 **配置 SSH Key**
 
 `ssh-keygen -t rsa -b 4096 -C "you@computer-name"`
+
 > -C 选项可省
 ```
 # You will be prompted for the following information. Press enter to accept the defaults. Defaults appear in parentheses.
@@ -43,7 +44,7 @@ The key fingerprint is:
 复制你的公钥并添加到你的**gitlab 个人资料**中
 ```shell
 $ cat ~/.ssh/id_rsa.pub
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQEL17Ufacg8cDhlQMS5NhV8z3GHZdhCrZbl4gz you@example.com`
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQEL17Ufacg8cDhlQMS5NhV8z3GHZdhCrZbl4gz you@example.com
 ```
 #### git的配置
 
@@ -67,6 +68,7 @@ $ git config --global commit.template [模板文件]
 #### 常用查询命令
 - 查看工作区和暂存区状态
   
+
 `git status`  
 - 用来查看历史
 

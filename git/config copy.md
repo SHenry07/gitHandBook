@@ -10,8 +10,9 @@
 
 [参考](#Reference)
 
-
 下面仅列举一些快速食用的命令和终端推荐
+
+ git默认的reset操作为`soft`，只回滚commit记录，不回滚代码，所以你不用担心git reset会把你的代码回滚掉。如果你需要回滚代码，请用git reset --hard)，重新`commit`，就可以合并成一条`commit`记录，然后`merge` 
 
 # 基础设置
 
