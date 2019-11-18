@@ -1,3 +1,6 @@
+.vscode/
 _book/
 node_modules/
-.vscode/
+book.pdf
+book.mobi
+book.epub
