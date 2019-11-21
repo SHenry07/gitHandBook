@@ -1,0 +1,39 @@
+{
+    "title": "Git 使用说明",
+    "description": "简单描述Git的配置和工作流的使用",
+    "author": "sunheng",
+    "output.name": "site",
+    "language": "zh-hans",
+    "links" : {
+        "sidebar" : {
+        "Home" : "https://www.banksteel.com"
+        }
+    },
+    "plugins": [
+        "-lunr", 
+        "-search", 
+        "-share",
+        "search-pro",
+        "copy-code-button",
+        "back-to-top-button",
+        "splitter",
+        "folding-chapters",
+        "page-toc-button",
+        "page-toc"
+    ],
+
+    "pluginsConfig": {
+        "theme-default": {
+            "showLevel": true
+        },
+        "page-toc-button": {
+            "maxTocDepth": 2,
+            "minTocSize": 2
+        },
+        "page-toc": {
+            "selector": ".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4",
+            "position": "before-first",
+            "showByDefault": true
+        }
+    }
+}

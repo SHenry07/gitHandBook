@@ -1,4 +1,4 @@
-- cherry-pick选樱桃-- 复制特定版本到当前HEAD
+- **cherry-pick-- 复制特定版本到当前HEAD**
 
 `git cherry-pick <提交号>...`
 
@@ -10,7 +10,7 @@
 
 咱们具体来看一下……
 
-- 交互式 rebase 指的是使用带参数 --interactive 的 rebase 命令, 简写为 -i
+- **交互式 rebase 指的是使用带参数 --interactive 的 rebase 命令, 简写为 -i**
 
 如果你在命令后增加了这个选项, Git 会打开一个 UI 界面并列出将要被复制到目标分支的备选提交记录，它还会显示每个提交记录的哈希值和提交说明，提交说明有助于你理解这个提交进行了哪些更改。
 
