@@ -1,4 +1,27 @@
-- **cherry-pick-- 复制特定版本到当前HEAD**
+
+- **amend -- 合并本次变更到上次提交/修改最后一次commit的log** 
+ `git commit --amend`
+
+- **reset**
+
+首先，你应该可以找到dev分支上的第一次提交，然后获取到它的提交哈希值，然后使用下面的命令：
+
+```shell
+git reset --soft <hash-code-of-first-commit> // 注意这里一定是soft 或者省略千万不要写成hard
+```
+
+当然，如果你想压缩的提交并不多，例如只有三个的话，可以使用相对位置`HEAD~3`。
+
+然后提交即可，在提交信息中，你可以重新整理你的提交信息，这样就把dev上的所有提交压缩为一次提交。
+
+```shell
+git commit
+```
+
+具体原理可以参考Pro Git一书，如果需要，我可以在这里做详细的解释。
+
+
+-  **cherry-pick -- 复制特定版本到当前HEAD**
 
 `git cherry-pick <提交号>...`
 

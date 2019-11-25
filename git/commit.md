@@ -5,7 +5,7 @@
 #### 直接下载并安装到本地
 
 ```shell
-curl https://git.banksteel.com/root/simple-ci-description/raw/master/git/template/git-commit-template-common.txt  > ~/.git-commit-template-common.txt`
+curl https://git.banksteel.com/root/simple-ci-description/raw/master/git/template/git-commit-template-common.txt  > ~/.git-commit-template-common.txt
 
 git config --global commit.template ~/.git-commit-template-common.txt
 ```

@@ -23,3 +23,26 @@
 
 现在你可以到official project \主仓库 创建合并请求了
 如何在Github上创建、删除分支、合并到master
+
+
+
+试想一下，开发过程中，如果我们频繁的 rebase master 分支，会有什么后果呢？
+
+
+
+![img](https://pic3.zhimg.com/80/v2-1ac5872e3517280d83aae4c12cb6e576_hd.jpg)
+
+
+
+当你不断 rebase master 的时候，其实你本地的 d 都变成了 d` ，再要和远端 pay 分支保持一致，你的本地分支 commit 记录已经不堪入目了。
+
+- 正式修改,执行命令,`-s` 就是自动加上`Signed-off-by:` 
+
+```bash
+$ git commit --amend -s 
+
+client_java git:(63b2cfd) git commit --amend -s
+[detached HEAD c46b30e] 1should find method from parent
+ Date: Mon Apr 16 18:29:29 2018 +0800
+ 1 file changed, 4 insertions(+), 1 deletion(-
+```

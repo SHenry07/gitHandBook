@@ -9,6 +9,7 @@
     * git各操作详解
         * [在提交树上移动(在不同commit和branch间移动)](git/pointer.md)
         * [撤销变更](git/git-re.md)
+        * [保存临时更改和恢复进度](git/stash.md)
         * [整理提交记录](git/rehistory.md)
         * [git-rebase的三个使用场景](git/rebase.md)
     * [常见错误](git/error.md)

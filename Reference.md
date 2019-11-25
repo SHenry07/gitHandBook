@@ -10,7 +10,7 @@
 
 [git rebase的好处](https://www.codercto.com/a/45325.html)
 
- [Java Zone: Merging vs. Rebasing](https://dzone.com/articles/this-week-in-spring-oauth-security-reactive-applic)
+[Java Zone: Merging vs. Rebasing](https://dzone.com/articles/this-week-in-spring-oauth-security-reactive-applic)
 
 [知乎: Merge vs Rebase](https://zhuanlan.zhihu.com/p/57872388)
 

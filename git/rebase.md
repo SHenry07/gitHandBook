@@ -1,15 +1,22 @@
 # rebase(变基)--使git记录简洁
 
- Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去 
+ Rebase 实际上就是取出一系列的提交记录，**“复制”**它们，然后在另外一个地方逐个的放下去 
 
- Rebase 的优势就是可以创造更线性的提交历史，这听上去有些难以理解。如果只允许使用 Rebase 的话，代码库的提交历史将会变得异常清晰。 
+![img](../images/v2-9611d75ced159540345f8ae53afd176d_hd.jpg)
 
-当前在bugFix分支，运行`git rebase master`就会将当前分支复制到master分支
+有三个点需要注意： 
+
+- rebase 先找出共同的祖先节点 
+- 从祖先节点把 pay 分支的提交记录摘下来，然后 rebase 到 master 分支 
+- rebase 之后的 commitID 其实已经发生了变化 尤其是第三点，经常会让人误操作，所以务必注意。
+
+Rebase 的优势就是可以创造更线性的提交历史，这听上去有些难以理解。如果只允许使用 Rebase 的话，代码库的提交历史将会变得异常清晰。 
+
+**当前在pay分支，运行`git rebase master`就会将当前分支复制到master分支**
 
 ## rebase的黄金法则
 
-
-一旦你理解了什么是rebase，最重要的是了解什么时候不使用它。git rebase的黄金法则是永远不要在公共分支使用它。
+一旦你理解了什么是rebase，最重要的是了解什么时候不使用它。git rebase的黄金法则是永远不要在公共分支使用它。(如果你理解了rebase，可以放宽到未push到remote仓库的commit)
 例如，想想如果你把master分支rebase到你的feature分支会发生什么：
 
 ![img](https://pic1.zhimg.com/80/v2-1235aa02eaf432c7bfc2ca078980929c_hd.jpg)
@@ -19,6 +26,20 @@
 rebase将master所有提交移动到feature顶端。问题是这只发生在你的仓库中。所有其他开发人员仍在使用原始版本master。由于rebase导致全新的提交，Git会认为你的master分支的历史与其他人的历史不同。
 同步两个master分支的唯一方法是将它们合并在一起，从而产生额外的合并提交和两组包含相同更改的提交（原始提交和来自rebase分支的更改）。这将是一个非常令人困惑的情况。
 因此，在你运行git rebase之前，总是问自己，“还有其他人在用这个分支吗？”如果答案是肯定的，那就把你的手从键盘上移开，考虑使用非破坏性的方式进行（例如，git revert命令）。否则，你可以随心所欲地重写历史记录。
+
+**如果你不理解以上的黄金法则，**
+
+ 在不用`-f`的前提下，想维持树的整洁，方法就是：在`git push`之前，先`git fetch`，再`git rebase`。 
+
+```shell
+git fetch origin master
+git rebase origin/master
+git push
+# 或者
+git push -r origin master 
+```
+
+
 
 # 三种使用场景
 
@@ -35,7 +56,7 @@ rebase将master所有提交移动到feature顶端。问题是这只发生在你�
 
 ```shell
 git rebase -i 版本号
-# 使用 git rebase -i HEAD~n 命令在默认文本编辑器中显示最近 n 个提交的列表。
+# 或使用 git rebase -i HEAD~n 命令在默认文本编辑器中显示最近 n 个提交的列表。
 git rebase -i HEAD~3 # 显示当前分支上最后 3 次提交的列表(~3从当前HEAD往前找3条)
 ```
 
@@ -178,3 +199,19 @@ rebase可以根据你团队的需要尽多地或少量地整合到你现有的[G
 
 这就是你需要知道的关于rebase你的分支。如果你更喜欢提交的干净，消除不必要合并的线性历史记录，那么你在继承另一分支的更改时应该使用git rebase 而不是git merge。
 另一方面，如果你想保留项目的完整历史记录并避免重写公共提交的风险，你可以仍然使用git merge。这两种选择都是完全可以的，但至少可以选择利用git rebase有它的好处。
+
+
+
+**git rebase，合并代码**
+
+前文简单介绍了 git rebase 和 git merge 的区别，坦率讲，他们各有优劣。 git rebase 能让你的 commit 记录非常整洁，无论是线上回滚还是 CodeReview 都更轻松；但却是一个有隐患的操作，使用时务必谨慎。 git merge 操作更安全，同时也更简单；但却会增加一些冗余的 commit 记录。
+
+这儿简单说说 rebase 的合并流程和注意事项吧。看下图
+
+
+
+
+
+
+
+- 

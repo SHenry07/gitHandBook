@@ -28,3 +28,12 @@ Git 把 master 分支移回到 `C1`；现在我们的本地代码库根本就不
 
 revert 之后就可以把你的更改推送到远程仓库与别人分享啦。
 
+## 多个commit回退
+
+  例子: 撤销从master之前提交的 第5个到第3个 之间的变化 
+
+ `git revert -n master~5..master~2`左开右闭(-5,-2]
+
+> Revert the changes done by commits from the fifth last commit in master (included) to the third last commit in master(included), but do not create any commit with the reverted changes. The revert only modifies the working tree and the index.
+
+![revert](../images/revert.png)
