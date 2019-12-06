@@ -14,6 +14,7 @@
         * [git-rebase的三个使用场景](git/rebase.md)
         * [Fast Forward和 no fast foward](git/fastfoward.md)
         * [查看历史-Git日志](git/log.md)
+        * [迁移/修改远程仓库](git/remote.md)
     * [常见错误](git/error.md)
 * [GitWorkFlow的简单介绍](gitworkflow.md)
     * [必读*commit标准/代码提交规范](git/commit.md)
