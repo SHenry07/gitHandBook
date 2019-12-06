@@ -15,18 +15,23 @@
 ## gitlab专属迁移方式
 ![image-20191206155710447](../images/image-20191206155710447.png)
 
-## 命令行或者IDEA中更改远程仓库地址
+## 命令行或者IDEA中更改远程仓库地址(三种办法)
 
-### 修改命令
+### 1.修改命令
 
 `git remote set-url origin <新的仓库url>`
 
-### 先删后加
+### 2.先删后加
 
-`git remote rm origin` // 可以将rm 换位mv 
-`git remote add origin <新的仓库url>`
+```
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin <新的仓库url>`
+git push -u origin --all
+git push -u origin --tags
+```
 
-### 修改config文件
+### 3.修改config文件
 
 如果你的项目有加入版本控制，那可以到项目根目录下，查看隐藏文件夹， 发现`.git`文件夹，找到其中的`config`文件，就可以修改其中的git remote origin地址了。
 
