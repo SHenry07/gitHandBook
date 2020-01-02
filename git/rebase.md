@@ -119,19 +119,82 @@ Once you are satisfied with your changes, run
 
  作为merge的替代方法，你可以使用以下命令将feature分支rebase到master分支上：
 `git checkout feature`
-`git rebase master`
-这会将整个feature分支移动到master分支的顶端，从而有效地整合了所有master的新提交。但是，rebase不是使用merge commit，而是通过为原始分支中的每个提交创建全新的提交来重写项目历史记录。 
 
+`git rebase master`
+这会将整个feature分支移动到master分支的顶端，从而有效地整合了所有master的新提交。但是，rebase不是使用merge commit，而是通过为原始分支中的每个提交创建全新的提交来重写项目历史记录。
+
+### 示例
+
+1. 我们先从 `master` 分支切出一个 `dev` 分支，进行开发：
+
+```shell
+git checkout -b feature1
+```
+
+![git1](../images/gitrebase1.png)
+2. 这时候，你的同事完成了一次 `hotfix`，并合并入了 `master` 分支，此时 `master` 已经领先于你的 `feature1` 分支了：
+![git2](../images/gitrebase2.png)
+3. 恰巧，我们想要同步 `master` 分支的改动，首先想到了 `merge`，执行：
+
+```shell
+git:(feature1) git merge master
+```
+
+![git3](../images/gitrebase3.png)
+图中绿色的点就是我们合并之后的结果，执行：
+
+```
+git:(feature1) git log
+```
+
+就会在记录里发现一些 `merge` 的信息，但是我们觉得这样污染了 `commit` 记录，想要保持一份干净的 `commit`，怎么办呢？这时候，`git rebase` 就派上用场了。
+
+4. 让我们来试试 `git rebase` ，先回退到同事 `hotfix` 后合并 `master` 的步骤：
+   ![git4](../images/gitrebase4.png)
+5. 使用 `rebase` 后来看看结果：
+
+```
+git:(feature1) git rebase master
+```
+
+#### `rebase` 做了什么操作呢？
+
+首先，`git` 会把 `feature1` 分支里面的每个 `commit` 取消掉；
+其次，把上面的操作临时保存成 `patch` 文件，存在 `.git/rebase` 目录下；
+然后，把 `feature1` 分支更新到最新的 `master` 分支；
+最后，把上面保存的 `patch` 文件应用到 `feature1` 分支上；
+
+![git5](../images/gitrebase5.png)
+
+从 `commit` 记录我们可以看出来，`feature1` 分支是基于 `hotfix` 合并后的 `master` ，自然而然的成为了最领先的分支，而且没有 `merge` 的 `commit` 记录，是不是感觉很舒服了。
+
+6. 在 `rebase` 的过程中，也许会出现冲突 `conflict`。在这种情况，`git` 会停止 `rebase` 并会让你去解决冲突。在解决完冲突后，用 `git add` 命令去更新这些内容。
+
+注意，你无需执行 git-commit，只要执行 continue
+
+```shell
+git rebase --continue
+```
+
+这样 `git` 会继续应用余下的 `patch` 补丁文件。
+
+7. 在任何时候，我们都可以用 `--abort` 参数来终止 `rebase` 的行动，并且分支会回到 `rebase` 开始前的状态。
+
+```shell
+git rebase —abort
+```
 
 
 ##  强制推
-
 
 如果你尝试将rebase过的master分支推到远程仓库，Git将阻止你这样做，因为它与远程master分支冲突。但是，你可以通过传递--force标志来强制推送，如下所示：
 `＃这个命令要非常小心！`
 `git push --force`
 这将覆盖远程master分支以匹配rebase过的分支，并使团队的其他成员感到困惑。因此，只有在确切知道自己在做什么时才能非常小心地使用此命令。
-工作流
+
+-----------------
+
+# 使用rebase的工作流
 rebase可以根据你团队的需要尽多地或少量地整合到你现有的[Git工作流程](https://link.zhihu.com/?target=https%3A//bitbucket.org/product%3Futm_source%3Ddzone%26utm_medium%3Dpaid-content%26utm_content%3Dmerging-vs-rebasing%26utm_campaign%3Dbitbucket_adexp-bbtofu_dzone-syn-content)中。在本节中，我们将了解rebase在功能开发的各个阶段的好处。
 任何工作流程git rebase的第一步是为每个功能创建专用分支。这为你提供了必要的分支结构，以安全地利用rebase：
 
@@ -196,22 +259,5 @@ rebase可以根据你团队的需要尽多地或少量地整合到你现有的[G
 
 ##  总结
 
-
-这就是你需要知道的关于rebase你的分支。如果你更喜欢提交的干净，消除不必要合并的线性历史记录，那么你在继承另一分支的更改时应该使用git rebase 而不是git merge。
-另一方面，如果你想保留项目的完整历史记录并避免重写公共提交的风险，你可以仍然使用git merge。这两种选择都是完全可以的，但至少可以选择利用git rebase有它的好处。
-
-
-
-**git rebase，合并代码**
-
-前文简单介绍了 git rebase 和 git merge 的区别，坦率讲，他们各有优劣。 git rebase 能让你的 commit 记录非常整洁，无论是线上回滚还是 CodeReview 都更轻松；但却是一个有隐患的操作，使用时务必谨慎。 git merge 操作更安全，同时也更简单；但却会增加一些冗余的 commit 记录。
-
-这儿简单说说 rebase 的合并流程和注意事项吧。看下图
-
-
-
-
-
-
-
-- 
+这就是你需要知道的关于rebase你的分支。如果你更喜欢提交的干净，消除不必要合并的线性历史记录，那么你在继承另一分支的更改时应该使用git rebase 而不是git merge。git rebase 能让你的 commit 记录非常整洁，无论是线上回滚还是 CodeReview 都更轻松；但却是一个有隐患的操作，使用时务必谨慎。
+另一方面，如果你想保留项目的完整历史记录并避免重写公共提交的风险，你可以仍然使用git merge。但却会增加一些冗余的 commit 记录。
