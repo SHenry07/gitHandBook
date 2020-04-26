@@ -7,7 +7,6 @@ cache:
     - node_modules/ # Node modules and dependencies
 
 before_script:
-  - npm config set registry http://nexus.registry.banksteel.com/repository/npm-group/
   - npm config get registry
   - npm install gitbook-cli -g # install gitbook
   - gitbook fetch 3.2.3 # fetch final stable version

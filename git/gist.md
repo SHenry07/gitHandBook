@@ -3,7 +3,7 @@
 Gist 是 概念类似于git的一种代码片段、文本、图片等的分布式存储方式
 ，具有git的基本功能版本控制、diff、log、markdown等。  探索中～～～～～～
 
-强烈欢迎来[钢银Gitlab](https://git.banksteel.com)/[钢联Gitlab](https://git.mysteel.com)体验
+
 
 #### 推荐食用方法
 

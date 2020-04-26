@@ -2,11 +2,11 @@ Sonarqube的测试结果会直接以**comment注释**的形式集成到Gitlab上
 
 ## Git上直接查看失败原因
 
-![如何查看](./images/gitsonar.png)
+脱敏处理
 - 如果是出现在本次提交文件中的bug、warnning会直接以备注的方式显示到对应的行上
-![例子](images/sonar1.png)
+脱敏处理
 - 如果没有出现在本次,会显示到最下面
-![](images/sonarbottom.png)
+脱敏处理
 
 ## Sonarqube上查看
 直接等陆,支持gitlab第三方登录

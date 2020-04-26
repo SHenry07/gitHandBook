@@ -25,7 +25,7 @@ git commit -m "docs(jira):增加了详细说明" -m "修改了git-jira.md" -m "C
 
 **看图示**
 
-![看图](./images/issueid.png)
+脱敏处理
 
 [上一模块Git工作流](gitworkflow)
 
