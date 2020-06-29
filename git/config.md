@@ -61,6 +61,9 @@ $ git config --global core.editor <emacs/vim/vscode/note++你喜欢的编辑器�
 $ git config --global pull.rebase true
 # 设置commit模板
 $ git config --global commit.template [模板文件]
+# 设置gpg
+$ gpg --list-secret-keys --keyid-format LONG
+$ git config --local user.signingkey XXXX之前生成的sec
 ```
 
 
